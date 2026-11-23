@@ -66,7 +66,7 @@ const OPT = {
   use: ["Decorativa ou visual", "Funcional, uso leve", "Funcional, com esforço mecânico", "Protótipo rápido", "Miniatura com muitos detalhes", "Para vender, acabamento caprichado"],
   prio: ["Equilibrada", "Qualidade visual", "Resistência", "Velocidade", "Menos material"],
 }
-const BRANDS = ["Multifila", "Volt3D", "Bambu Lab", "3D Lab", "Polymaker", "eSun", "Sunlu", "Creality", "Elegoo", "Overture", "Hatchbox", "Prusament", "Anycubic", "Outros"]
+const BRANDS = ["Multifila", "Voolt3D", "Bambu Lab", "3D Lab", "Polymaker", "eSun", "Sunlu", "Creality", "Elegoo", "Overture", "Hatchbox", "Prusament", "Anycubic", "Outros"]
 const DEFAULT_FORM: FormData3mf = {
   printer: "Bambu Lab A1",
   nozzle: "0.4",
@@ -107,6 +107,7 @@ function loadForm(): FormData3mf {
     if (!OPT.nozzle.includes(f.nozzle)) f.nozzle = DEFAULT_FORM.nozzle
     if (!OPT.ams.includes(f.ams)) f.ams = DEFAULT_FORM.ams
     if (!OPT.type.includes(f.filType)) f.filType = DEFAULT_FORM.filType
+    if (f.brand === "Volt3D") f.brand = "Voolt3D" // nome antigo, escrito errado
     if (!BRANDS.includes(f.brand)) f.brand = DEFAULT_FORM.brand
     if (!OPT.use.includes(f.use)) f.use = DEFAULT_FORM.use
     if (!OPT.prio.includes(f.prio)) f.prio = DEFAULT_FORM.prio
