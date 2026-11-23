@@ -87,3 +87,16 @@ test("altera a parede única do topo e marca para o Bambu Studio", async () => {
   assert.equal(out.cfg.top_one_wall_type, "not apply")
   assert.ok(out.cfg.different_settings_to_system[0].split(";").includes("top_one_wall_type"))
 })
+
+test("aceita lista mandada como texto (\"[15]\")", async () => {
+  const p = await openProject(await makeExample())
+  const it = evaluateChanges(p, [
+    { chave: "fan_min_speed", valor: "[15]" },
+    { chave: "outer_wall_speed", valor: "[150]" },
+    { chave: "nozzle_temperature", valor: "['210', '210', '210', '210']" },
+  ])
+  assert.deepEqual(it[0].after, ["15", "15", "15", "15"])
+  assert.notEqual(it[1].status, "bad", it[1].msg)
+  assert.equal([].concat(it[1].after)[0], "150")
+  assert.deepEqual(it[2].after, ["210", "210", "210", "210"])
+})

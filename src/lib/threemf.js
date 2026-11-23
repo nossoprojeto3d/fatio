@@ -186,7 +186,16 @@ function coerceOne(spec, v) {
   if (t === 'pct') return n + '%';
   return String(+n.toFixed(4));
 }
+/* O Claude às vezes manda a lista como texto ("[15]", "['0.2', '0.2']"): vira lista de verdade */
+function unwrap(raw) {
+  if (typeof raw === 'string' && /^\s*\[[\s\S]*\]\s*$/.test(raw)) {
+    try { const a = JSON.parse(raw.replace(/'/g, '"')); if (Array.isArray(a)) raw = a; } catch (_) { /* segue como texto */ }
+  }
+  if (Array.isArray(raw) && raw.length === 1) return raw[0];
+  return raw;
+}
 function coerce(spec, raw, before) {
+  raw = unwrap(raw);
   if (Array.isArray(before)) {
     const vals = Array.isArray(raw) ? raw : Array(before.length).fill(raw);
     if (vals.length !== before.length) throw new Error('Esta configuração é por filamento e precisa de ' + before.length + ' valores (ou um só para todos)');
