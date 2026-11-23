@@ -33,7 +33,7 @@ import { NativeSelect } from "@/components/ui/native-select"
 import { Textarea } from "@/components/ui/textarea"
 import { Toaster } from "@/components/ui/sonner"
 import { Duvidas, Footer } from "@/components/faq"
-import { ParceiroFaixa, ParceiroLateral } from "@/components/parceiro"
+import { ParceiroLateral } from "@/components/parceiro"
 import { cn } from "@/lib/utils"
 import { track } from "@/lib/analytics"
 import { ConsentBanner } from "@/components/consent-banner"
@@ -936,7 +936,6 @@ export default function App() {
                               <p>Arquivo gerado. Abra no Bambu Studio e fatie de novo.</p>
                             </m.div>
                           )}
-                          {downloaded && <ParceiroFaixa />}
                           <div role="status" className="flex flex-wrap items-center gap-2 text-sm">
                             <Badge className="tabular-nums">{counts.change + (counts.change === 1 ? " pronta para aplicar" : " prontas para aplicar")}</Badge>
                             {counts.same > 0 && <Badge variant="secondary" className="tabular-nums">{counts.same + (counts.same === 1 ? " já estava assim" : " já estavam assim")}</Badge>}
