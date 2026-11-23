@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
    O clique vai para o GA como "clique_afiliado" (igual à calculadora), com o
    lugar de onde veio em "local" para comparar os dois apps. */
 const VOOLT = {
-  url: "https://afiliado.c2cseller.com/voolt3d-nosso-projeto-b0e5828bb12818a1",
+  url: "https://afiliado.c2cseller.com/voolt3d-nosso-projeto-6cd02a0e9be16375",
   cupom: "NOSSOPROJETO",
 }
 const LOGO = `${import.meta.env.BASE_URL}voolt3d.webp`
